@@ -42,6 +42,7 @@ def main():
   sensors()
   global count
   fields = [temp,pressure,humidity]
+  nowtime = [time.h,time.m,time.s]
   while True:
     if count == 2:
       with open(path, 'a') as data:

@@ -25,7 +25,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
-  print("Sensors done")
+  print("Sensor data extracted.")
 #--------------------------------
 
 
@@ -57,7 +57,7 @@ def init():
   while True:
     try:
       main()
-      print("Data uploaded")
+      print("Data uploaded.")
     except:
       print("Error. Retrying in 5 seconds")
       time.sleep(5)

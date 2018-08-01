@@ -46,7 +46,7 @@ def main():
     if count == 2:
       with open(path, 'a') as data:
         writer = csv.writer(data)
-        writer.writerow(
+        writer.writerow(nowtime)
         writer.writerow(fields)
         data.close()
         count = 0

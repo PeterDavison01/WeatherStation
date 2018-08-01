@@ -35,7 +35,6 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  variables()
   dir = "/mnt/Nas/"
   path = (dir + nowdate+".csv")
   global count
@@ -68,6 +67,4 @@ def init():
       continue
 #--------------------------------
 
-
-variables()
 init()

@@ -55,5 +55,13 @@ def main():
       print(count)
 #--------------------------------
 
-while True:
-  main()
+#Init
+#--------------------------------
+def init():
+  while True:
+    try:
+      main()
+    except:
+      time.sleep(5)
+      init()
+#--------------------------------

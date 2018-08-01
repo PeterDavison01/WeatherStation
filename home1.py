@@ -44,6 +44,7 @@ def main():
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
+        print("Data uploaded.")
         count = 0
         break
     else:
@@ -57,7 +58,6 @@ def init():
   while True:
     try:
       main()
-      print("Data uploaded.")
     except:
       print("Error. Retrying in 5 seconds")
       time.sleep(5)

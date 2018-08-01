@@ -1,7 +1,7 @@
 #Libraries
 #--------------------------------
 import time
-from time import strftime
+from time import strftime, gmtime
 import os
 from sense_hat import SenseHat
 import csv
@@ -11,9 +11,10 @@ import csv
 #Variables
 #--------------------------------
 count = 0
-now = strftime("%d-%m-%y")
+nowdate = strftime("%d-%m-%y")
 dir = "/mnt/Nas/"
-path = (dir + now+".csv")
+path = (dir + nowdate+".csv")
+nowtime = gmtime()
 #--------------------------------
 
 
@@ -45,6 +46,7 @@ def main():
     if count == 2:
       with open(path, 'a') as data:
         writer = csv.writer(data)
+        writer.writerow(
         writer.writerow(fields)
         data.close()
         count = 0

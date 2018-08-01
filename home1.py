@@ -12,7 +12,7 @@ import csv
 #--------------------------------
 count = 0
 now = strftime("%d-%m-%y")
-dir = "/home/pi/WeatherData/"
+dir = "/mnt/Nas/"
 path = dir + now
 #--------------------------------
 

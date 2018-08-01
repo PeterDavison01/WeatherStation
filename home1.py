@@ -11,12 +11,6 @@ import csv
 #Variables
 #--------------------------------
 count = 0
-nowdate = strftime("%d-%m-%y")
-dir = "/mnt/Nas/"
-path = (dir + nowdate+".csv")
-hour = strftime("%H")
-min = strftime("%M")
-sec = strftime("%S")
 #--------------------------------
 
 
@@ -33,10 +27,23 @@ def sensors():
 #--------------------------------
 
   
+#Updating variables
+#--------------------------------
+def variables():
+  nowdate = strftime("%d-%m-%y")
+  dir = "/mnt/Nas/"
+  path = (dir + nowdate+".csv")
+  hour = strftime("%H")
+  min = strftime("%M")
+  sec = strftime("%S")
+#--------------------------------
+
+
 #Main
 #--------------------------------
 def main():
   sensors()
+  variables()
   global count
   ctime = (hour+":"+min+":"+sec)
   emptycell = ""

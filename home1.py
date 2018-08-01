@@ -65,4 +65,5 @@ def init():
       continue
 #--------------------------------
 
+time.sleep(20)
 init()

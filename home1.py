@@ -11,6 +11,10 @@ import csv
 #Variables
 #--------------------------------
 count = 0
+nowdate = strftime("%d-%m-%y")
+hour = strftime("%H")
+min = strftime("%M")
+sec = strftime("%S")
 #--------------------------------
 
 
@@ -24,16 +28,6 @@ def sensors():
   global temp
   global humidity
   global pressure
-#--------------------------------
-
-  
-#Updating variables
-#--------------------------------
-def variables():
-  nowdate = strftime("%d-%m-%y")
-  hour = strftime("%H")
-  min = strftime("%M")
-  sec = strftime("%S")
 #--------------------------------
 
 

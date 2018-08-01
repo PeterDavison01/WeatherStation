@@ -31,8 +31,6 @@ def sensors():
 #--------------------------------
 def variables():
   nowdate = strftime("%d-%m-%y")
-  dir = "/mnt/Nas/"
-  path = (dir + nowdate+".csv")
   hour = strftime("%H")
   min = strftime("%M")
   sec = strftime("%S")
@@ -44,6 +42,8 @@ def variables():
 def main():
   sensors()
   variables()
+  dir = "/mnt/Nas/"
+  path = (dir + nowdate+".csv")
   global count
   ctime = (hour+":"+min+":"+sec)
   emptycell = ""

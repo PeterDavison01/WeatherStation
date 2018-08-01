@@ -44,13 +44,12 @@ def main():
   sensors()
   global count
   fields = [temp,pressure,humidity]
-  ctime = [hour,min,sec]
+  ctime = "hour+":"+min+":"+sec"
   while True:
     if count == 2:
       with open(path, 'a') as data:
         writer = csv.writer(data)
-        writer.writerow(ctime)
-        writer.writerow(fields)
+        writer.writerow(ctime,fields)
         data.close()
         count = 0
         break

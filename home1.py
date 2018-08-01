@@ -43,7 +43,7 @@ def main():
   fields = [temp,pressure,humidity]
   while True:
     if count == 2:
-      with open(path, 'ab') as data:
+      with open(path, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

@@ -14,7 +14,7 @@ count = 0
 nowdate = strftime("%d-%m-%y")
 dir = "/mnt/Nas/"
 path = (dir + nowdate+".csv")
-nowtime = strftime("%H-%M-%S")
+nowtime = strftime("%H%M%S")
 #--------------------------------
 
 

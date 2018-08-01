@@ -33,6 +33,7 @@ def sensors():
 def main():
   sensors()
   path = (dir + datetime.now().strftime("%d-%m-%y")+".csv")
+  print(path)
   global count
   emptycell = ""
   fields = [datetime.now().strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]

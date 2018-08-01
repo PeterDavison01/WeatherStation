@@ -13,7 +13,7 @@ import csv
 count = 0
 now = strftime("%d-%m-%y")
 dir = "/mnt/Nas/"
-path = dir + now
+path = (dir + now+".csv")
 #--------------------------------
 
 

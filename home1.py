@@ -44,7 +44,8 @@ def main():
   sensors()
   global count
   ctime = (hour+":"+min+":"+sec)
-  fields = [ctime,temp,pressure,humidity]
+  emptycell = ""
+  fields = [ctime,emptycell,temp,pressure,humidity]
   while True:
     if count == 2:
       with open(path, 'a') as data:

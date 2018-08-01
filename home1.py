@@ -43,6 +43,7 @@ def variables():
 #--------------------------------
 def main():
   sensors()
+  variables()
   global count
   ctime = (hour+":"+min+":"+sec)
   emptycell = ""
@@ -66,7 +67,6 @@ def main():
 def init():
   while True:
     try:
-      variables()
       main()
     except:
       print("File in use. Waiting 5 seconds")
@@ -74,4 +74,6 @@ def init():
       continue
 #--------------------------------
 
+
+variables()
 init()

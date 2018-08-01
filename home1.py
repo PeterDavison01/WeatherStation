@@ -25,6 +25,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
+  print("Sensors done")
 #--------------------------------
 
 

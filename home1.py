@@ -14,7 +14,9 @@ count = 0
 nowdate = strftime("%d-%m-%y")
 dir = "/mnt/Nas/"
 path = (dir + nowdate+".csv")
-nowtime = strftime("%H%M%S")
+hour = strftime("%H")
+min = strftime("%M")
+sec = strftime("%S")
 #--------------------------------
 
 
@@ -42,12 +44,12 @@ def main():
   sensors()
   global count
   fields = [temp,pressure,humidity]
-  nowtime = [time.h,time.m,time.s]
+  time = [hour,min,sec]
   while True:
     if count == 2:
       with open(path, 'a') as data:
         writer = csv.writer(data)
-        writer.writerow(nowtime)
+        writer.writerow(time)
         writer.writerow(fields)
         data.close()
         count = 0

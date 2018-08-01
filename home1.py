@@ -43,7 +43,7 @@ def variables():
 #--------------------------------
 def main():
   sensors()
-  variables()
+  #variables()
   global count
   ctime = (hour+":"+min+":"+sec)
   emptycell = ""

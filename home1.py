@@ -44,7 +44,7 @@ def main():
   while True:
     if count == 2:
       with open(path, 'ab') as data:
-        writer = csv.write(data)
+        writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
         count = 0

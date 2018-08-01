@@ -1,7 +1,7 @@
 #Libraries
 #--------------------------------
 import time
-from time import strftime, gmtime
+from time import strftime
 import os
 from sense_hat import SenseHat
 import csv
@@ -14,7 +14,7 @@ count = 0
 nowdate = strftime("%d-%m-%y")
 dir = "/mnt/Nas/"
 path = (dir + nowdate+".csv")
-nowtime = gmtime()
+nowtime = strftime("&H-&M-&S")
 #--------------------------------
 
 

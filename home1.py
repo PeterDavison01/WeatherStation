@@ -31,12 +31,7 @@ def sensors():
   global humidity
   global pressure
 #--------------------------------
-  
-  
-#Transmission
-#--------------------------------
-#--------------------------------
-  
+
   
 #Main
 #--------------------------------
@@ -47,7 +42,7 @@ def main():
   emptycell = ""
   fields = [ctime,emptycell,temp,pressure,humidity]
   while True:
-    if count == 2:
+    if count == 5:
       with open(path, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
@@ -60,4 +55,5 @@ def main():
       print(count)
 #--------------------------------
 
-main()
+while True:
+  main()

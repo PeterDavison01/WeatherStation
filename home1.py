@@ -19,12 +19,12 @@ dir = "/mnt/Nas/"
 #--------------------------------
 def sensors():
   sense = SenseHat()
-  temp = str(round(sense.get_temperature()))
-  humidity = str(round(sense.get_humidity()))
-  pressure = str(round(sense.get_pressure()))
   global temp
   global humidity
   global pressure
+  temp = str(round(sense.get_temperature()))
+  humidity = str(round(sense.get_humidity()))
+  pressure = str(round(sense.get_pressure()))
 #--------------------------------
 
 

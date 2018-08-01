@@ -33,11 +33,11 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  path = (dir + datetime.now().strftime("%d-%m-%y")+".csv")
+  path = (dir + strftime("%d-%m-%y")+".csv")
   print(path)
   global count
   emptycell = ""
-  fields = [datetime.now().strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
+  fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
   while True:
     if count == 5:
       with open(path, 'a') as data:

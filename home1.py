@@ -64,6 +64,10 @@ def init():
     except:
       print("File in use. Waiting 5 seconds")
       time.sleep(5)
+      nowdate = strftime("%d-%m-%y")
+      hour = strftime("%H")
+      min = strftime("%M")
+      sec = strftime("%S")
       continue
 #--------------------------------
 

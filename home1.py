@@ -11,6 +11,7 @@ import csv
 #Variables
 #--------------------------------
 count = 0
+dir = "/mnt/Nas/"
 #--------------------------------
 
 
@@ -31,7 +32,6 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  dir = "/mnt/Nas/"
   path = (dir + datetime.now().strftime("%d-%m-%y")+".csv")
   global count
   emptycell = ""

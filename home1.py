@@ -59,8 +59,9 @@ def init():
     try:
       main()
     except:
-      print("File in use. Waiting 5 seconds")
+      print("Error. Retrying in 5 seconds")
       time.sleep(5)
+      count = 0
       continue
 #--------------------------------
 

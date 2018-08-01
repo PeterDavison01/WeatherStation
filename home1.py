@@ -11,10 +11,6 @@ import csv
 #Variables
 #--------------------------------
 count = 0
-nowdate = strftime("%d-%m-%y")
-hour = strftime("%H")
-min = strftime("%M")
-sec = strftime("%S")
 #--------------------------------
 
 
@@ -36,11 +32,10 @@ def sensors():
 def main():
   sensors()
   dir = "/mnt/Nas/"
-  path = (dir + nowdate+".csv")
+  path = (dir + datetime.now().strftime("%d-%m-%y")+".csv")
   global count
-  ctime = (hour+":"+min+":"+sec)
   emptycell = ""
-  fields = [ctime,emptycell,temp,pressure,humidity]
+  fields = [datetime.now().strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
   while True:
     if count == 5:
       with open(path, 'a') as data:
@@ -64,10 +59,6 @@ def init():
     except:
       print("File in use. Waiting 5 seconds")
       time.sleep(5)
-      nowdate = strftime("%d-%m-%y")
-      hour = strftime("%H")
-      min = strftime("%M")
-      sec = strftime("%S")
       continue
 #--------------------------------
 

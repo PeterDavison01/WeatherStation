@@ -83,7 +83,7 @@ def Transmission():
   if status == "Connected":
     distutils.dir_util.copy_tree(Localdir, NASdir)
   else:
-    continue
+    #empty
 #--------------------------------
 
 

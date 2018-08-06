@@ -82,6 +82,9 @@ def Transmission():
     status = "Not Connected"
   if status == "Connected":
     distutils.dir_util.copy_tree(Localdir, NASdir)
+    print("Transmitted")
+  else:
+    print("Not connected")
 #--------------------------------
 
 

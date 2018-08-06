@@ -5,16 +5,18 @@ from time import strftime
 import os
 from sense_hat import SenseHat
 import csv
+import urllib
 #--------------------------------
 
 
 #Variables
 #--------------------------------
 count = 0
-dir = "/mnt/Nas/"
+NASdir = "/mnt/Nas/"
+LocalDir = "/home/pi/WeatherData/"
 #--------------------------------
 
-
+ 
 #SenseHat Sensors
 #--------------------------------
 def sensors():
@@ -33,19 +35,22 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  path = (dir + strftime("%d-%m-%y")+".csv")
-  print(path)
+  LocalPath = (LocalDir + strftime("%d-%m-%y")+".csv")
   global count
   emptycell = ""
   fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
   while True:
     if count == 5:
-      with open(path, 'a') as data:
+      with open(LocalPath, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
-        print("Data uploaded.")
+        print("Data saved.")
         count = 0
+        try:
+          Transmission()
+        except:
+          continue
         break
     else:
       time.sleep(1)
@@ -65,5 +70,22 @@ def init():
       continue
 #--------------------------------
 
-time.sleep(10)
+
+#Transmission
+#--------------------------------
+def Transmission():
+  try:
+    url = "//192.168.16.20/WeatherStation/"
+    urllib.urlopen(url)
+    status = "Connected"
+  except:
+    status = "Not Connected"
+  if status == "Connected":
+    distutils.dir_util.copy_tree(Localdir, NASdir)
+    continue
+  else:
+    continue
+#--------------------------------
+
+
 init()

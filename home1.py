@@ -1,5 +1,6 @@
 #Libraries
 #--------------------------------
+import time
 from time import strftime
 import os
 from sense_hat import SenseHat

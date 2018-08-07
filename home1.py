@@ -83,5 +83,5 @@ def Transmission():
  
 #--------------------------------
 
-main()
-#init()
+#main()
+init()

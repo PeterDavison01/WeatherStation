@@ -74,11 +74,11 @@ def init():
 #Transmission
 #--------------------------------
 def Transmission():
-  #try:
+  try:
     shutil.move(LocalDir, NASdir, copy_function=copy2)
     print("Transmitted")
-  #except:
-    #print("Cannot connect") 
+  except:
+    print("Cannot connect") 
 #--------------------------------
 
 

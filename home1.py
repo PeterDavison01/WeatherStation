@@ -60,7 +60,7 @@ def init():
   while True:
     try:
       main()
-    except distutils.error:
+    except:
       print("Error. Retrying in 5 seconds")
       time.sleep(5)
       count = 0
@@ -72,9 +72,10 @@ def init():
 #--------------------------------
 def Transmission():
   try:
-    distutils.dir_util.copy_tree(LocalPath, NASdir)
+    distutils.dir_util.copy_tree(LocalDir, NASdir)
+    #shutil.move((Local, NASdir)
     print("Transmitted")
-  except distutils.error:
+  except :
     print("Cannot connect") 
 #--------------------------------
 

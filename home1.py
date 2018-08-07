@@ -50,9 +50,7 @@ def main():
         print("Data saved.")
         count = 0
       print("Test1")
-      distutils.dir_util.copy_tree(LocalDir, NASdir)
-      #shutil.copytree(LocalDir, NASdir)
-      #Transmission()
+      Transmission()
       break
     else:
       time.sleep(1)
@@ -61,15 +59,15 @@ def main():
 
 #Init
 #--------------------------------
-#def init():
-  #while True:
-    #try:
-      #main()
-   # except:
-      #print("Error. Retrying in 5 seconds")
-      #time.sleep(5)
-     # count = 0
-      #continue
+def init():
+  while True:
+    try:
+      main()
+    except:
+      print("Error. Retrying in 5 seconds")
+      time.sleep(5)
+      count = 0
+      continue
 #--------------------------------
 
 
@@ -78,7 +76,7 @@ def main():
 def Transmission():
   try:
     print("Test2")
-    shutil.copytree(LocalDir, NASdir)
+    distutils.dir_util.copy_tree(LocalDir, NASdir)
     print("Transmitted")
   except:
     print("Cannot connect")

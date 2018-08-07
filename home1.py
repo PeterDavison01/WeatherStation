@@ -15,7 +15,7 @@ from distutils import dir_util
 #--------------------------------
 count = 0
 NASdir = "/mnt/Nas/"
-LocalDir = "/home/pi/WeatherData"
+LocalDir = "/home/pi/WeatherData/"
 #--------------------------------
 
  

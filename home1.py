@@ -74,6 +74,7 @@ def init():
 #--------------------------------
 def Transmission():
   try:
+    print("Test2")
     shutil.copytree(LocalDir, NASdir)
     print("Transmitted")
   except:

@@ -47,10 +47,10 @@ def main():
         data.close()
         print("Data saved.")
         count = 0
-        try:
-          Transmission()
-        except:
-          continue
+        #try:
+        Transmission()
+        #except:
+          #continue
         break
     else:
       time.sleep(1)

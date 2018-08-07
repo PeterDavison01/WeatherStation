@@ -13,8 +13,8 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-NASdir = "/mnt/Nas/"
-LocalDir = "/home/pi/WeatherData/"
+NASdir = "/mnt/Nas"
+LocalDir = "/home/pi/WeatherData"
 #--------------------------------
 
  
@@ -36,7 +36,7 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  LocalPath = (LocalDir + strftime("%d-%m-%y")+".csv")
+  LocalPath = (LocalDir + "/" + strftime("%d-%m-%y")+".csv")
   global count
   emptycell = ""
   fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]

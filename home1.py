@@ -75,7 +75,7 @@ def init():
 #--------------------------------
 def Transmission():
   try:
-    url = "//192.168.16.20/WeatherStation/"
+    url = "//192.168.16.20:5000/WeatherStation/"
     urllib.urlopen(url)
     status = "Connected"
   except:

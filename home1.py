@@ -5,7 +5,7 @@ from time import strftime
 import os
 from sense_hat import SenseHat
 import csv
-from shutil import copytree
+from distutils import dir_util
 #--------------------------------
 
 

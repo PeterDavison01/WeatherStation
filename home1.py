@@ -49,7 +49,6 @@ def main():
         data.close()
         print("Data saved.")
         count = 0
-      print("Test1")
       Transmission()
       break
     else:
@@ -75,11 +74,10 @@ def init():
 #--------------------------------
 def Transmission():
   try:
-    print("Test2")
     distutils.dir_util.copy_tree(LocalDir, NASdir)
-    print("Transmitted")
+    print("Data Transmitted.")
   except:
-    print("Cannot connect")
+    print("Cannot connect.")
  
 #--------------------------------
 

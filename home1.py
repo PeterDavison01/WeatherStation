@@ -14,7 +14,7 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-NASdir = "/mnt/Nas"
+NASdir = "/mnt/Nas/"
 LocalDir = "/home/pi/WeatherData"
 #--------------------------------
 

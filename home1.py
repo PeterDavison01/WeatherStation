@@ -60,7 +60,7 @@ def init():
   while True:
     try:
       main()
-    except distutils.erro:
+    except distutils.error:
       print("Error. Retrying in 5 seconds")
       time.sleep(5)
       count = 0

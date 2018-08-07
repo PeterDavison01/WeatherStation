@@ -6,6 +6,7 @@ import os
 from sense_hat import SenseHat
 import csv
 import urllib
+import ping, socket
 #--------------------------------
 
 
@@ -74,17 +75,22 @@ def init():
 #Transmission
 #--------------------------------
 def Transmission():
+#  try:
+#    url = "//192.168.16.20:5000/WeatherStation/"
+#    urllib.urlopen(url)
+#    status = "Connected"
+#  except:
+#    status = "Not Connected"
+#  if status == "Connected":
+#    distutils.dir_util.copy_tree(Localdir, NASdir)
+#    print("Transmitted")
+#  else:
+#    print("Not connected")
   try:
-    url = "//192.168.16.20:5000/WeatherStation/"
-    urllib.urlopen(url)
-    status = "Connected"
-  except:
-    status = "Not Connected"
-  if status == "Connected":
-    distutils.dir_util.copy_tree(Localdir, NASdir)
-    print("Transmitted")
-  else:
+    ping.verbose_ping('192.168.16.20',count=3)
+  except socket.error, e:
     print("Not connected")
+ 
 #--------------------------------
 
 

@@ -6,6 +6,7 @@ import os
 from sense_hat import SenseHat
 import csv
 import urllib
+import shutil
 #--------------------------------
 
 

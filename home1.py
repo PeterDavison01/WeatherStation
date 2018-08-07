@@ -59,15 +59,15 @@ def main():
 
 #Init
 #--------------------------------
-def init():
-  while True:
-    try:
+#def init():
+  #while True:
+    #try:
       main()
-    except:
-      print("Error. Retrying in 5 seconds")
-      time.sleep(5)
-      count = 0
-      continue
+   # except:
+      #print("Error. Retrying in 5 seconds")
+      #time.sleep(5)
+     # count = 0
+      #continue
 #--------------------------------
 
 
@@ -83,5 +83,5 @@ def Transmission():
  
 #--------------------------------
 
-
-init()
+main()
+#init()

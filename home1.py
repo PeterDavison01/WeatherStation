@@ -5,6 +5,7 @@ from time import strftime
 import os
 from sense_hat import SenseHat
 import csv
+import shutil
 from distutils import dir_util
 #--------------------------------
 
@@ -72,8 +73,8 @@ def init():
 #--------------------------------
 def Transmission():
   try:
-    distutils.dir_util.copy_tree(LocalDir, NASdir)
-    #shutil.move((Local, NASdir)
+    #distutils.dir_util.copy_tree(LocalDir, NASdir)
+    shutil.copytree(Local, NASdir)
     print("Transmitted")
   except :
     print("Cannot connect") 

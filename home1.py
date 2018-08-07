@@ -62,7 +62,7 @@ def main():
 #def init():
   #while True:
     #try:
-      main()
+      #main()
    # except:
       #print("Error. Retrying in 5 seconds")
       #time.sleep(5)

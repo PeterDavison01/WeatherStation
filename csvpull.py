@@ -3,7 +3,7 @@ from time import strftime
 
 now = strftime("%d-%m-%y")
 dir = "/home/pi/WeatherData/"
-path = dir + now
+path = dir + now + ".csv"
 
 with open(path, 'r') as csv:
   for row in csv:

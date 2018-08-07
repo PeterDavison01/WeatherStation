@@ -49,7 +49,8 @@ def main():
         print("Data saved.")
         count = 0
       print("Test1")
-      Transmission()
+      shutil.copytree(LocalDir, NASdir)
+      #Transmission()
       break
     else:
       time.sleep(1)

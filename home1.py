@@ -47,8 +47,8 @@ def main():
         data.close()
         print("Data saved.")
         count = 0
-        Transmission()
-        break
+      Transmission()
+      break
     else:
       time.sleep(1)
       count = count + 1

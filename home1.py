@@ -74,7 +74,7 @@ def Transmission():
   try:
     distutils.dir_util.copy_tree(LocalPath, NASdir)
     print("Transmitted")
-  except distutils.error, e:
+  except distutils.error:
     print("Cannot connect") 
 #--------------------------------
 

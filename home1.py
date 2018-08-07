@@ -48,6 +48,7 @@ def main():
         data.close()
         print("Data saved.")
         count = 0
+      print("Test1")
       Transmission()
       break
     else:

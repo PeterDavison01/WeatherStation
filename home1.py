@@ -75,7 +75,7 @@ def init():
 #--------------------------------
 def Transmission():
   try:
-    distutils.dir_util.copy_tree(Localdir, NASdir)
+    shutil.move(LocalDir, NASdir, copy_function=copy2)
     print("Transmitted")
   except:
     print("Cannot connect") 

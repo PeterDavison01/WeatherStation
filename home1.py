@@ -71,11 +71,11 @@ def init():
 #Transmission
 #--------------------------------
 def Transmission():
-  try:
+  #try:
     shutil.copytree(LocalDir, NASdir)
     print("Transmitted")
-  except:
-    print("Cannot connect") 
+ # except:
+    #print("Cannot connect") 
 #--------------------------------
 
 

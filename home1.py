@@ -42,7 +42,7 @@ def main():
   emptycell = ""
   fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
   while True:
-    if count == 60:
+    if count == 2:
       with open(LocalPath, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)

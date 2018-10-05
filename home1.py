@@ -37,7 +37,7 @@ def sensors():
 #--------------------------------
 def main():
   sensors()
-  LocalPath = (LocalDir + "/" + strftime("%m-%d-%y")+".csv")
+  LocalPath = (LocalDir + "/" + strftime("%y-%m-%d")+".csv")
   global count
   emptycell = ""
   fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]

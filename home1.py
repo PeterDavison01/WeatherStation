@@ -14,8 +14,8 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-NASdir = "/mnt/Nas"
-LocalDir = "/home/pi/WeatherData"
+TimbleDIR = "\\192.168.16.20\WeatherStation\Timble.csv"
+BackupDIR = "\home\pi\WeatherData\Backup.csv"
 #--------------------------------
 
  
@@ -32,28 +32,22 @@ def sensors():
   print("Sensor data extracted.")
 #--------------------------------
 
-
 #Main
 #--------------------------------
 def main():
   sensors()
-  LocalPath = (LocalDir + "/" + strftime("%y-%m-%d")+".csv")
-  global count
-  emptycell = ""
-  fields = [strftime("%H:%M:%S"),emptycell,temp,pressure,humidity]
+  fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if count == 2:
-      with open(LocalPath, 'a') as data:
+    if strftime("%M:%S") == "00:00":
+      with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
         print("Data saved.")
-        count = 0
-      Transmission()
+        backup = False
       break
     else:
-      time.sleep(1)
-      count = count + 1
+      break
 #--------------------------------
 
 #Init
@@ -63,22 +57,10 @@ def init():
     try:
       main()
     except:
-      print("Error. Retrying in 5 seconds")
+      print("Cannot connect ")
       time.sleep(5)
-      count = 0
       continue
 #--------------------------------
 
-
-#Transmission
-#--------------------------------
-def Transmission():
-  try:
-    distutils.dir_util.copy_tree(LocalDir, NASdir)
-    print("Data Transmitted.")
-  except:
-    print("Cannot connect.")
- 
-#--------------------------------
 
 init()

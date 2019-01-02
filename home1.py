@@ -59,13 +59,14 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "02:50":
+    if strftime("%M:%S") == "03:45":
       print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
         print("Data saved.")
+        done=True
       break
     else:
       break
@@ -79,7 +80,6 @@ def init():
     try:
       print("80")
       main()
-      done=True
       print(done)
       Transmission()
     except:

@@ -74,7 +74,7 @@ def main():
 #--------------------------------
 def init():
   done = False
-  Global done
+  done = "global"
   while True:
     try:
       main()

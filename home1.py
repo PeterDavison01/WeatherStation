@@ -37,19 +37,19 @@ def sensors():
 def Transmission():
   try:
     with open(TimbleDIR, 'rb') as HomeTimble:
-      print("40")
+      #print("40")
       reader = csv.reader(HomeTimble)
-      print("42")
+      #print("42")
       lines = list(reader)
-      print("44")
+     # print("44")
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
-      print("48")
+     # print("48")
       writer.writerows(lines)
-      print("50")  
+     # print("50")  
     HomeTimble.close()
     NASTimble.close()
-    print("Data Transmitted.")
+   # print("Data Transmitted.")
   except:
     print("Cannot connect.")
 #--------------------------------
@@ -61,7 +61,7 @@ def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
     if strftime("%M:%S") == "50:00":
-      with open(TimbleDIR, 'w') as data:
+      with open(TimbleDIR, 'wb') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

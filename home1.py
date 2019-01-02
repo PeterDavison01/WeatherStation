@@ -42,7 +42,7 @@ def Transmission():
       #print("42")
       lines = list(reader)
      # print("44")
-    with open(NasDIR, 'w') as NASTimble:
+    with open(NasDIR, 'wb') as NASTimble:
       writer = csv.writer(NASTimble)
      # print("48")
       writer.writerows(lines)

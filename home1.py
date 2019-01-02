@@ -14,6 +14,7 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
+done = False
 NasDIR = '/mnt/Nas/Timble.csv'
 TimbleDIR = '/home/pi/WeatherData/Timble.csv'
 #--------------------------------
@@ -36,38 +37,35 @@ def sensors():
 #--------------------------------
 def Transmission():
   try:
-    with open(TimbleDIR, 'rb') as HomeTimble:
-      #print("40")
-      reader = csv.reader(HomeTimble)
-      #print("42")
-      lines = list(reader)
-     # print("44")
-    with open(NasDIR, 'wb') as NASTimble:
-      writer = csv.writer(NASTimble)
-     # print("48")
-      writer.writerows(lines)
-     # print("50")  
-    HomeTimble.close()
-    NASTimble.close()
+      with open(TimbleDIR, 'rb') as HomeTimble:
+        reader = csv.reader(HomeTimble)
+        lines = list(reader)
+      with open(NasDIR, 'wb') as NASTimble:
+        writer = csv.writer(NASTimble)
+        writer.writerows(lines)  
+      HomeTimble.close()
+      NASTimble.close()
    # print("Data Transmitted.")
-  except:
-    print("Cannot connect.")
+    except:
+      print("Cannot connect.")
 #--------------------------------
 
 #Main
 #--------------------------------
 def main():
-  sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "02:20":
+    if strftime("%M:%S") == "12:20" and done == False:
+      sensors()
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
         print("Data saved.")
+        done = True
       break
     else:
+      done = False
       break
 #--------------------------------
 

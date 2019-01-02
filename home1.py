@@ -74,6 +74,7 @@ def main():
 def init():
   while True:
     try:
+      print("77")
       main()
       Transmission()
     except:

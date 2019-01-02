@@ -37,17 +37,17 @@ def sensors():
 #--------------------------------
 def Transmission():
   try:
-      with open(TimbleDIR, 'r') as HomeTimble:
-        reader = csv.reader(HomeTimble)
-        lines = list(reader)
-      with open(NasDIR, 'w') as NASTimble:
-        writer = csv.writer(NASTimble)
-        writer.writerows(lines)  
-      HomeTimble.close()
-      NASTimble.close()
-      print("Data Transmitted.")
+    with open(TimbleDIR, 'r') as HomeTimble:
+      reader = csv.reader(HomeTimble)
+      lines = list(reader)
+    with open(NasDIR, 'w') as NASTimble:
+      writer = csv.writer(NASTimble)
+      writer.writerows(lines)  
+    HomeTimble.close()
+    NASTimble.close()
+    print("Data Transmitted.")
   except:
-      print("Cannot connect.")
+    print("Cannot connect.")
 #--------------------------------
 
 #Main

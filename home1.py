@@ -46,7 +46,7 @@ def Transmission():
       HomeTimble.close()
       NASTimble.close()
   except:
-    1=1
+    done = False
    
 #--------------------------------
 

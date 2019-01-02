@@ -14,8 +14,8 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-TimbleDIR = "\\192.168.16.20\WeatherStation\Timble.csv"
-BackupDIR = "\home\pi\WeatherData\Backup.csv"
+NasDIR = "\\192.168.16.20\WeatherStation\Timble.csv"
+TimbleDIR = "\home\pi\WeatherData\Timble.csv"
 #--------------------------------
 
  
@@ -30,6 +30,24 @@ def sensors():
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
   print("Sensor data extracted.")
+#--------------------------------
+
+#Transmission
+#--------------------------------
+def Transmission():
+  try:
+    with open(TimbleDIR, 'rb') as HomeTimble:
+      reader = csv.reader(HomeTimble)
+      lines = list(reader)
+      lines[2] = row
+    with open(NasDIR, 'wb') as NASTimble:
+      writer = csv.writer(NASTimble)
+      writer.writerows(lines)
+    HomeTime.close()
+    NASTimble.close()
+    print("Data Transmitted.")
+  except:
+    print("Cannot connect.")
 #--------------------------------
 
 #Main
@@ -56,6 +74,7 @@ def init():
   while True:
     try:
       main()
+      Transmission()
     except:
       print("Cannot connect ")
       time.sleep(5)

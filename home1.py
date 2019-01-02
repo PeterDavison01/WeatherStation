@@ -83,7 +83,6 @@ def init():
       Transmission()
     except:
       print("Cannot connect ")
-      time.sleep(5)
       continue
 #--------------------------------
 

@@ -58,7 +58,7 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if (strftime("%M:%S") == "48:40"):
+    if (strftime("%M:%S") == "50:00"):
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)

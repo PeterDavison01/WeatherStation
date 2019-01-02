@@ -47,6 +47,7 @@ def Transmission():
       HomeTimble.close()
       NASTimble.close()
       print("Transmitted")
+      time.sleep(59)
   except:
     done = False 
    
@@ -64,7 +65,6 @@ def main():
         writer.writerow(fields)
         data.close()
         print("Data saved.")
-        time.sleep(5)
         done=True
       break
     else:

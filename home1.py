@@ -78,7 +78,6 @@ def init():
   while True:
     try:
       main()
-      print(done)
       Transmission()
     except:
       print("Cannot connect ")

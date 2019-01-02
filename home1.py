@@ -47,7 +47,7 @@ def Transmission():
       NASTimble.close()
    # print("Data Transmitted.")
   except:
-      print("Cannot connect.")
+     # print("Cannot connect.")
 #--------------------------------
 
 #Main

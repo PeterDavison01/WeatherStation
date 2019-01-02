@@ -46,6 +46,7 @@ def Transmission():
       writer = csv.writer(NASTimble)
       print("48")
       writer.writerows(lines)
+      print("50")  
     HomeTime.close()
     NASTimble.close()
     print("Data Transmitted.")

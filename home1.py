@@ -29,7 +29,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
-  print("Sensor data extracted.")
+  #print("Sensor data extracted.")
 #--------------------------------
 
 #Transmission
@@ -37,11 +37,15 @@ def sensors():
 def Transmission():
   try:
     with open(TimbleDIR, 'rb') as HomeTimble:
+      print("40")
       reader = csv.reader(HomeTimble)
+      print("42")
       lines = list(reader)
+      print("44")
       lines[2] = row
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
+      print("48")
       writer.writerows(lines)
     HomeTime.close()
     NASTimble.close()

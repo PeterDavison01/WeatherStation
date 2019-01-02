@@ -61,7 +61,7 @@ def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
     if strftime("%M:%S") == "58:10":
-      with open(TimbleDIR, 'a') as data:
+      with open(TimbleDIR, 'wb') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

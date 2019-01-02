@@ -46,7 +46,7 @@ def Transmission():
       HomeTimble.close()
       NASTimble.close()
    # print("Data Transmitted.")
-    except:
+  except:
       print("Cannot connect.")
 #--------------------------------
 
@@ -55,7 +55,7 @@ def Transmission():
 def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "12:20" and done == False:
+    if strftime("%M:%S") == "12:50" and done == False:
       sensors()
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)

@@ -63,7 +63,7 @@ def main():
         writer.writerow(fields)
         data.close()
         print("Data saved.")
-        time.sleep(59)
+        time.sleep(5)
         print(done)
       break
     else:

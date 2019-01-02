@@ -43,6 +43,7 @@ def Transmission():
       lines = list(reader)
       print("44")
       lines[2] = row
+      print("46")
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       print("48")

@@ -30,7 +30,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
-  #print("Sensor data extracted.")
+  print("Sensor data extracted.")
 #--------------------------------
 
 #Transmission
@@ -55,7 +55,7 @@ def Transmission():
 def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if (strftime("%M:%S") == "13:50") and (done == False):
+    if (strftime("%M:%S") == "15:0") and (done == False):
       sensors()
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)

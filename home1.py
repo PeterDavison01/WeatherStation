@@ -47,7 +47,7 @@ def Transmission():
       print("48")
       writer.writerows(lines)
       print("50")  
-    HomeTime.close()
+    HomeTimble.close()
     NASTimble.close()
     print("Data Transmitted.")
   except:

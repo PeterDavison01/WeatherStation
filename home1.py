@@ -62,7 +62,7 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "06:55":
+    if strftime("%M:%S") == "09:10":
      # print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
@@ -84,7 +84,6 @@ def init():
     try:
       #print("80")
       main()
-      print(done)
       Transmission()
     except:
       print("Cannot connect ")

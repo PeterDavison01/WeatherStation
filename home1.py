@@ -64,7 +64,6 @@ def main():
         data.close()
         print("Data saved.")
         time.sleep(5)
-        print(done)
       break
     else:
       break
@@ -76,7 +75,6 @@ def init():
   while True:
     try:
       main()
-      print(done)
       Transmission()
     except:
       print("Cannot connect ")

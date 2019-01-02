@@ -16,7 +16,6 @@ from distutils import dir_util
 count = 0
 NasDIR = '\mnt\Nas\Timble.csv'
 TimbleDIR = '\home\pi\WeatherData\Timble.csv'
-TestDIR = '\home\pi\WeatherData\010101.csv'
 #--------------------------------
 
  
@@ -61,8 +60,8 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "03:30":
-      with open(TestDIR, 'a', delimiter=',') as data:
+    if strftime("%M:%S") == "09:00":
+      with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

@@ -37,10 +37,10 @@ def sensors():
 #--------------------------------
 def Transmission():
   try:
-      with open(TimbleDIR, 'rb') as HomeTimble:
+      with open(TimbleDIR, 'r') as HomeTimble:
         reader = csv.reader(HomeTimble)
         lines = list(reader)
-      with open(NasDIR, 'wb') as NASTimble:
+      with open(NasDIR, 'w') as NASTimble:
         writer = csv.writer(NASTimble)
         writer.writerows(lines)  
       HomeTimble.close()

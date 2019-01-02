@@ -14,7 +14,7 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-NasDIR = '/mnt/Nas/Timble.csv'
+NasDIR = '\mnt\Nas\Timble.csv'
 TimbleDIR = '\home\pi\WeatherData\Timble.csv'
 #--------------------------------
 
@@ -42,8 +42,6 @@ def Transmission():
       print("42")
       lines = list(reader)
       print("44")
-      lines[2] = row
-      print("46")
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       print("48")

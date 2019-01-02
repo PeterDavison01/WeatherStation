@@ -30,7 +30,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
-  #print("Sensor data extracted.")
+ # print("Sensor data extracted.")
 #--------------------------------
 
 #Transmission
@@ -48,11 +48,11 @@ def Transmission():
       NASTimble.close()
       print("Transmitted")
       done = False
-     # global done
+      global done
       time.sleep(59)
   except:
     done = False
-    #global done
+    global done
    
 #--------------------------------
 
@@ -70,7 +70,7 @@ def main():
         data.close()
         print("Data saved.")
         done=True
-        #global done
+        global done
       break
     else:
       break

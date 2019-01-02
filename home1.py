@@ -58,8 +58,8 @@ def Transmission():
 def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
-  while True:
-    if strftime("%M:%S") == "57:45" and done==False:
+  while done = False:
+    if strftime("%M:%S") == "57:45":
       print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)

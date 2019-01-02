@@ -30,7 +30,7 @@ def sensors():
   temp = str(round(sense.get_temperature()))
   humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
-  print("Sensor data extracted.")
+  #print("Sensor data extracted.")
 #--------------------------------
 
 #Transmission
@@ -47,10 +47,12 @@ def Transmission():
       HomeTimble.close()
       NASTimble.close()
       print("Transmitted")
-      global done = False
+      done = False
+      global done
       time.sleep(59)
   except:
-    global done = False 
+    done = False
+    global done
    
 #--------------------------------
 
@@ -60,14 +62,15 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "05:45":
-      print("63")
+    if strftime("%M:%S") == "06:55":
+     # print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()
         print("Data saved.")
-        global done=True
+        done=True
+        global done
       break
     else:
       break
@@ -79,7 +82,7 @@ def init():
   done = False
   while True:
     try:
-      print("80")
+      #print("80")
       main()
       print(done)
       Transmission()

@@ -72,6 +72,7 @@ def main():
 #Init
 #--------------------------------
 def init():
+ print("75")
   while True:
     try:
       print("77")

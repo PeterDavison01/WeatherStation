@@ -45,9 +45,9 @@ def Transmission():
         writer.writerows(lines)  
       HomeTimble.close()
       NASTimble.close()
-   # print("Data Transmitted.")
+      print("Data Transmitted.")
   except:
-     # print("Cannot connect.")
+      print("Cannot connect.")
 #--------------------------------
 
 #Main

@@ -47,9 +47,10 @@ def Transmission():
       HomeTimble.close()
       NASTimble.close()
       print("Transmitted")
+      global done = False
       time.sleep(59)
   except:
-    done = False 
+    global done = False 
    
 #--------------------------------
 

@@ -14,7 +14,7 @@ from distutils import dir_util
 #Variables
 #--------------------------------
 count = 0
-NasDIR = "\mnt\Nas\Timble.csv"
+NasDIR = "\\192.168.16.20\WeatherStation\Timble.csv"
 TimbleDIR = "\home\pi\WeatherData\Timble.csv"
 #--------------------------------
 

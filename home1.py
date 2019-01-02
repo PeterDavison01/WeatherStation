@@ -40,7 +40,7 @@ def Transmission():
       reader = csv.reader(HomeTimble)
       lines = list(reader)
       lines[2] = row
-    with open(NasDIR, 'wb') as NASTimble:
+    with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       writer.writerows(lines)
     HomeTime.close()
@@ -56,8 +56,8 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "00:00":
-      with open(TimbleDIR, 'a') as data:
+    if strftime("%M:%S") == "16:00":
+      with open(TimbleDIR, 'w') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

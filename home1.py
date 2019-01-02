@@ -13,7 +13,6 @@ from distutils import dir_util
 
 #Variables
 #--------------------------------
-done = False
 count = 0
 NasDIR = '/mnt/Nas/Timble.csv'
 TimbleDIR = '/home/pi/WeatherData/Timble.csv'
@@ -74,6 +73,7 @@ def main():
 #Init
 #--------------------------------
 def init():
+ done = False
   while True:
     try:
       main()

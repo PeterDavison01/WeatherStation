@@ -66,7 +66,7 @@ def main():
         writer.writerow(fields)
         data.close()
         print("Data saved.")
-        done=True
+        global done=True
       break
     else:
       break

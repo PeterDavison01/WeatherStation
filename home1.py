@@ -42,7 +42,7 @@ def Transmission():
       #print("42")
       lines = list(reader)
      # print("44")
-    with open(NasDIR, 'a') as NASTimble:
+    with open(NasDIR, 'w') as NASTimble:
       writer = csv.writer(NASTimble)
      # print("48")
       writer.writerows(lines)
@@ -61,7 +61,7 @@ def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
     if strftime("%M:%S") == "00:35":
-      with open(TimbleDIR, 'wb') as data:
+      with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
         data.close()

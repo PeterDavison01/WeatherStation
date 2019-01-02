@@ -65,7 +65,7 @@ def main():
         data.close()
         print("Data saved.")
         time.sleep(5)
-        print(done)
+        done=True
       break
     else:
       break

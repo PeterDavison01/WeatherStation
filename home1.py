@@ -48,11 +48,11 @@ def Transmission():
       NASTimble.close()
       print("Transmitted")
       done = False
-      global done
+     # global done
       time.sleep(59)
   except:
     done = False
-    global done
+    #global done
    
 #--------------------------------
 
@@ -62,7 +62,7 @@ def main():
   sensors()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
-    if strftime("%M:%S") == "09:10":
+    if strftime("%M:%S") == "12:50":
      # print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
@@ -70,7 +70,7 @@ def main():
         data.close()
         print("Data saved.")
         done=True
-        global done
+        #global done
       break
     else:
       break

@@ -74,6 +74,7 @@ def Transmission():
 #--------------------------------
 def main():
   sensors()
+  print("&&")
   Calcs()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressire,d_humidity]
   while True:

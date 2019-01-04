@@ -77,7 +77,7 @@ def main():
   Calcs()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressure,d_humidity]
   while True:
-    if strftime("%M:%S") == "57:30":
+    if strftime("%M:%S") == "04:50":
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)

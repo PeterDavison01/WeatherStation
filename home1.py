@@ -8,6 +8,7 @@ import csv
 import shutil
 import distutils
 from distutils import dir_util
+import numpy as np
 #--------------------------------
 
 
@@ -33,6 +34,15 @@ def sensors():
  # print("Sensor data extracted.")
 #--------------------------------
 
+#Calculating the changes
+#--------------------------------
+def Calcs():
+  with open(NasDIR,'r') as NAS:
+    lines = NAS.readlines()
+  lastline = np.genfromtxt(lines[-1:],delimiter=',')
+  print(lastline)
+#--------------------------------
+
 #Transmission
 #--------------------------------
 def Transmission():
@@ -53,7 +63,6 @@ def Transmission():
   except:
     done = False
     global done
-   
 #--------------------------------
 
 #Main
@@ -63,7 +72,6 @@ def main():
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
   while True:
     if strftime("%M:%S") == "00:00":
-     # print("63")
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)
@@ -90,5 +98,5 @@ def init():
       continue
 #--------------------------------
 
-
-init()
+Calc()
+#init()

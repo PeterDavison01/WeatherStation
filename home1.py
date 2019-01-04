@@ -16,7 +16,7 @@ import numpy as np
 #--------------------------------
 global done
 count = 0
-NasDIR = '/mnt/Nas/Timble Data Final.csv'
+NasDIR = '/mnt/Nas/Timble Data.csv'
 TimbleDIR = '/home/pi/WeatherData/Timble.csv'
 #--------------------------------
 
@@ -77,7 +77,7 @@ def main():
   Calcs()
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressure,d_humidity]
   while True:
-    if strftime("%M:%S") == "04:50":
+    if strftime("%M:%S") == "05:50":
       with open(TimbleDIR, 'a') as data:
         writer = csv.writer(data)
         writer.writerow(fields)

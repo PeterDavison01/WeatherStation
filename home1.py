@@ -37,6 +37,9 @@ def sensors():
 #Calculating the changes
 #--------------------------------
 def Calcs():
+  global temp
+  global humidity
+  global pressure
   with open(NasDIR,'rb') as NAS:
     Naslines = NAS.readlines()
     NAS.close()

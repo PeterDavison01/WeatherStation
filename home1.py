@@ -77,7 +77,7 @@ def main():
   print("&&")
   Calcs()
   print("^^")
-  fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressire,d_humidity]
+  fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressure,d_humidity]
   while True:
     if strftime("%M:%S") == "54:15":
       with open(TimbleDIR, 'a') as data:

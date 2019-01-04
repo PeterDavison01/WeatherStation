@@ -40,7 +40,7 @@ def Calcs():
   global temp
   global humidity
   global pressure
-  with open(NasDIR,'rb') as NAS:
+  with open(NasDIR,'r') as NAS:
     Naslines = NAS.readlines()
     NAS.close()
   lastline = np.genfromtxt(Naslines[-1:],delimiter=',')
@@ -48,9 +48,9 @@ def Calcs():
   d_temp = (temp) - (lastline[1])
   d_pressure = (pressure) - (lastline[2])
   d_humidity = (humidity) - (lastline[3])
-  with open(NasDIR,'wb') as f:
+  with open(NasDIR,'w') as f:
     writer = csv.writer(f)
-    writer.writerows(Naslines)
+    writer.writerows(Naslines, delimiter=',')
     f[-1:7] = temp
 #--------------------------------
 

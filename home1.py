@@ -16,7 +16,7 @@ import numpy as np
 #--------------------------------
 global done
 count = 0
-NasDIR = '/mnt/Nas/Timble.csv'
+NasDIR = '/mnt/Nas/Timble Data Final.csv'
 TimbleDIR = '/home/pi/WeatherData/Timble.csv'
 #--------------------------------
 

@@ -44,6 +44,7 @@ def Calcs():
     Naslines = NAS.readlines()
     NAS.close()
   lastline = np.genfromtxt(Naslines[-1:],delimiter=',')
+  print(lastline)
   d_temp = (temp) - (lastline[1])
   d_pressure = (pressure) - (lastline[2])
   d_humidity = (humidity) - (lastline[3])

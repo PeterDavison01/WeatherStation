@@ -50,7 +50,7 @@ def Calcs():
   d_humidity = (humidity) - (lastline[3])
   with open(NasDIR,'w') as f:
     writer = csv.writer(f)
-    writer.writerows(Naslines, delimiter=',')
+    writer.writerows(Naslines)
     f[-1:7] = temp
 #--------------------------------
 

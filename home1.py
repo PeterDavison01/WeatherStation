@@ -108,5 +108,6 @@ def init():
       continue
 #--------------------------------
 
+sensors()
 Calcs()
 #init()

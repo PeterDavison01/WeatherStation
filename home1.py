@@ -37,7 +37,7 @@ def sensors():
 #Calculating the changes
 #--------------------------------
 def Calcs():
-  with open(NasDIR,'r') as NAS:
+  with open(NasDIR,'rb') as NAS:
     lines = NAS.readlines()
   lastline = np.genfromtxt(lines[-1:],delimiter=',')
   print(lastline)

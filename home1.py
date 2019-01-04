@@ -98,5 +98,5 @@ def init():
       continue
 #--------------------------------
 
-Calc()
+Calcs()
 #init()

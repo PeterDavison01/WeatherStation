@@ -40,7 +40,7 @@ def Calcs():
   with open(NasDIR,'rb') as NAS:
     lines = NAS.readlines()
   lastline = np.genfromtxt(lines[-1:],delimiter=',')
-  print(lastline[2:])
+  print(lastline[1:])
 #--------------------------------
 
 #Transmission

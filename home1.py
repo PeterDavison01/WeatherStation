@@ -37,9 +37,7 @@ def sensors():
 #Calculating the changes
 #--------------------------------
 def Calcs():
-  global temp
-  global humidity
-  global pressure
+  global temp, humidity, pressure, d_temp, d_humidity, d_pressure
   with open(NasDIR,'r') as NAS:
     Naslines = NAS.readlines()
     NAS.close()
@@ -48,10 +46,6 @@ def Calcs():
   d_temp = (temp) - (lastline[1])
   d_pressure = (pressure) - (lastline[2])
   d_humidity = (humidity) - (lastline[3])
-  with open(NasDIR,'w') as f:
-    writer = csv.writer(f)
-    writer.writerows(Naslines)
-    print(f[-1:7])
 #--------------------------------
 
 #Transmission
@@ -81,7 +75,8 @@ def Transmission():
 #--------------------------------
 def main():
   sensors()
-  fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity]
+  Calcs()
+  fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressire,d_humidity]
   while True:
     if strftime("%M:%S") == "00:00":
       with open(TimbleDIR, 'a') as data:
@@ -111,6 +106,5 @@ def init():
       continue
 #--------------------------------
 
-sensors()
-Calcs()
-#init()
+
+init()

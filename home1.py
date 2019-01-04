@@ -28,9 +28,9 @@ def sensors():
   global temp
   global humidity
   global pressure
-  temp = str(round(sense.get_temperature()))
-  pressure = str(round(sense.get_pressure()))
-  humidity = str(round(sense.get_humidity()))
+  temp = (round(sense.get_temperature()))
+  pressure = (round(sense.get_pressure()))
+  humidity = (round(sense.get_humidity()))
   #print("Sensor data extracted.")
 #--------------------------------
 
@@ -44,9 +44,9 @@ def Calcs():
     Naslines = NAS.readlines()
     NAS.close()
   lastline = np.genfromtxt(Naslines[-1:],delimiter=',')
-  d_temp = int(temp) - int(lastline[1])
-  d_pressure = int(pressure) - int(lastline[2])
-  d_humidity = int(humidity) - int(lastline[3])
+  d_temp = (temp) - (lastline[1])
+  d_pressure = (pressure) - (lastline[2])
+  d_humidity = (humidity) - (lastline[3])
   with open(NasDIR,'wb') as f:
     f[-1:7] = temp
 #--------------------------------

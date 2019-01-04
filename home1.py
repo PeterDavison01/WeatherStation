@@ -51,7 +51,7 @@ def Calcs():
   with open(NasDIR,'w') as f:
     writer = csv.writer(f)
     writer.writerows(Naslines)
-    f[-1:7] = temp
+    print(f[-1:7])
 #--------------------------------
 
 #Transmission

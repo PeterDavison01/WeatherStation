@@ -76,6 +76,7 @@ def main():
   sensors()
   print("&&")
   Calcs()
+  print("^^")
   fields = [strftime("%y-%m-%d %H:%M:%S"),temp,pressure,humidity,d_temp,d_pressire,d_humidity]
   while True:
     if strftime("%M:%S") == "54:15":
@@ -102,6 +103,7 @@ def init():
       Transmission()
     except:
       print("Cannot connect ")
+      time.sleep(1)
       continue
 #--------------------------------
 

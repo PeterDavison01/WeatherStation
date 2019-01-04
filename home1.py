@@ -48,6 +48,7 @@ def Calcs():
   d_pressure = (pressure) - (lastline[2])
   d_humidity = (humidity) - (lastline[3])
   with open(NasDIR,'wb') as f:
+   print(f[-1:7])
     f[-1:7] = temp
 #--------------------------------
 

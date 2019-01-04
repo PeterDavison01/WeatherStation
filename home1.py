@@ -29,18 +29,23 @@ def sensors():
   global humidity
   global pressure
   temp = str(round(sense.get_temperature()))
-  humidity = str(round(sense.get_humidity()))
   pressure = str(round(sense.get_pressure()))
- # print("Sensor data extracted.")
+  humidity = str(round(sense.get_humidity()))
+  #print("Sensor data extracted.")
 #--------------------------------
 
 #Calculating the changes
 #--------------------------------
 def Calcs():
   with open(NasDIR,'rb') as NAS:
-    lines = NAS.readlines()
-  lastline = np.genfromtxt(lines[-1:],delimiter=',')
-  print(lastline[1:])
+    Naslines = NAS.readlines()
+    NAS.close()
+  lastline = np.genfromtxt(Naslines[-1:],delimiter=',')
+  d_temp = temp - lastline[1]
+  d_pressure = pressure - lastline[2]
+  d_humidity = humidity - lastline[3]
+  with open(NasDIR,'wb') as f:
+    f[-1:7] = temp
 #--------------------------------
 
 #Transmission
@@ -53,9 +58,10 @@ def Transmission():
         lines = list(reader)
       with open(NasDIR, 'a') as NASTimble:
         writer = csv.writer(NASTimble)
-        writer.writerows(lines)  
+        writer.writerows(lines)
       HomeTimble.close()
       NASTimble.close()
+      
       print("Transmitted")
       done = False
       global done
@@ -92,6 +98,7 @@ def init():
     try:
       #print("80")
       main()
+      Calcs()
       Transmission()
     except:
       print("Cannot connect ")

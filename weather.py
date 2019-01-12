@@ -15,7 +15,7 @@ from io import StringIO
 
 app = Flask(__name__)
 # NasDIR = '//192.168.16.20/WeatherStation/Timble Data.csv'
-NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
+NasDIR = '/mnt/Nas/WeatherStation/Timble Data.csv'
 
 
 @app.route("/")

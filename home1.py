@@ -12,7 +12,7 @@ import numpy as np
 
 # --------------------------------
 # Variables
-NasDIR = '/home/pi/mnt/Nas/Timble Data.csv'
+NasDIR = '/mnt/Nas/Timble Data.csv'
 
 # --------------------------------
 # Main

@@ -17,7 +17,7 @@ import io
 # from io import StringIO
 
 app = Flask(__name__)
-NasDIR = '/home/pi/mnt/Nas/Timble Data.csv'
+NasDIR = '/mnt/Nas/Timble Data.csv'
 HarrogateModel='/home/pi/Documents/WeatherStation/Harrogate model.sav'
 # NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
 

@@ -49,7 +49,7 @@ def homepage():
         except (AttributeError, EOFError, ImportError, IndexError) as e:
                 # secondary errors
                 print(traceback.format_exc(e))
-                continue
+		#continue
 
         # construct the HTML output from all the data gathered
         outputhtml = outputhtml + "<h2>Current time is: "+TD+"</h2>"

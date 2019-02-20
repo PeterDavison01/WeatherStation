@@ -22,14 +22,16 @@ def main():
   temp = (round(sense.get_temperature()))
   pressure = (round(sense.get_pressure()))
   humidity = (round(sense.get_humidity()))
+  Naslines = str
 
   # Calculate the changes from the last read
   try:
     with open(NasDIR, 'rb') as NAS:
       Naslines = NAS.readlines()
-      NAS.close()
   except IOError:
     print("Could not read file:", NasDIR)
+  finally:
+    NAS.close()  
 
   lastline = np.genfromtxt(Naslines[-1:], delimiter=',')
   d_temp = (temp) - (lastline[1])
@@ -42,9 +44,10 @@ def main():
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       writer.writerow(fields)
-      NASTimble.close()
   except:
     print("Could not write to file:", NasDIR)
+  finally:
+    NASTimble.close()
 # --------------------------------
 
 main()

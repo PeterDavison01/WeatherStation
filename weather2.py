@@ -18,7 +18,7 @@ import io
 
 app = Flask(__name__)
 NasDIR = '/mnt/Nas/Timble Data.csv'
-HarrogateModel='home/pi/WeatherStation/Harrogate model.sav'
+HarrogateModel='/home/pi/WeatherStation/Harrogate model.sav'
 # NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
 
 @app.route("/")

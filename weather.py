@@ -17,7 +17,8 @@ import io
 # from io import StringIO
 
 app = Flask(__name__)
-NasDIR = '/mnt/Nas/Timble Data.csv'
+NasDIR = '/home/pi/mnt/Nas/Timble Data.csv'
+HarrogateModel='/home/pi/Documents/WeatherStation/Harrogate model.sav'
 # NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
 
 @app.route("/")
@@ -27,18 +28,29 @@ def homepage():
         TD = strftime("%H:%M:%S on %d-%m-%y")
         # datacsv=io.open(NasDIR,'rb')
 
-        with open(NasDIR,'rb') as NAS:
-               Naslines = NAS.readlines()
-               NAS.close()
+        try:
+                with open(NasDIR,'rb') as NAS:
+                        Naslines = NAS.readlines()
+        except IOError:
+                print "Could not read file:", NasDIR
+        finally:
+                NAS.close()
+
         # deconstruct last line into useful components
         logdate=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=0,dtype=str)
         logdata=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=(1,2,3,4,5,6),dtype=float)
         currstats=logdata.reshape(1,6)
 
         # load the model, and use it to predict the future temp
-        loaded_model = pickle.load(open('HarrogateModel.sav', 'rb'))
-        result = loaded_model.predict(currstats)
-        result = "{:3.1f}".format(result[0])
+        try:
+                loaded_model = pickle.load(open(HarrogateModel, 'rb'))
+                result = loaded_model.predict(currstats)
+                result = "{:3.1f}".format(result[0])
+        except (AttributeError, EOFError, ImportError, IndexError) as e:
+                # secondary errors
+                print(traceback.format_exc(e))
+                continue
+
         # construct the HTML output from all the data gathered
         outputhtml = outputhtml + "<h2>Current time is: "+TD+"</h2>"
         outputhtml = outputhtml + "The last log readings were from: " + str(logdate) + "</p>"

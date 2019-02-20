@@ -33,8 +33,8 @@ def homepage():
                         Naslines = NAS.readlines()
         except IOError:
                 print("Could not read file:", NasDIR)
-        finally:
-                NAS.close()
+       # finally:
+        #        NAS.close()
 
         # deconstruct last line into useful components
         logdate=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=0,dtype=str)

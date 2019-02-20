@@ -28,7 +28,7 @@ def main():
     with open(NasDIR, 'rb') as NAS:
       Naslines = NAS.readlines()
   except IOError:
-    print "Could not read file:", NasDIR
+    print("Could not read file:", NasDIR)
   finally:
     NAS.close()
 
@@ -44,7 +44,7 @@ def main():
       writer = csv.writer(NASTimble)
       writer.writerow(fields)
   except:
-    print "Could not write to file:", NasDIR
+    print("Could not write to file:", NasDIR)
   finally:
     NASTimble.close()
 # --------------------------------

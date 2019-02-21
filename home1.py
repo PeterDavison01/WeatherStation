@@ -24,7 +24,6 @@ def main():
   humidity = (round(sense.get_humidity()))
   Naslines = ""
   NAS = ""
-  NASTimble = ""
 
   # Calculate the changes from the last read
   try:
@@ -46,10 +45,9 @@ def main():
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       writer.writerow(fields)
+      NASTimble.close()
   except:
     print("Could not write to file:", NasDIR)
-  finally:
-    NASTimble.close()
 # --------------------------------
 
 main()

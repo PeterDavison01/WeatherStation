@@ -45,6 +45,7 @@ def main():
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)
       writer.writerow(fields)
+      NASTimble.close()
   except:
     print("Could not write to file:", NasDIR)
   #NASTimble.close()

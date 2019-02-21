@@ -40,7 +40,7 @@ def main():
   d_humidity = (humidity) - (lastline[3])
 
   # write the data to the NAS
-  fields = [strftime("%y-%m-%d %H:%M:%S"), temp, pressure, humidity, d_temp, d_pressure, d_humidity]
+  fields = [strftime("%d-%m-%Y %H:%M:%S"), temp, pressure, humidity, d_temp, d_pressure, d_humidity]
   try:
     with open(NasDIR, 'a') as NASTimble:
       writer = csv.writer(NASTimble)

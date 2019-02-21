@@ -23,7 +23,8 @@ def main():
   pressure = (round(sense.get_pressure()))
   humidity = (round(sense.get_humidity()))
   Naslines = str
-  NAS = ("")
+  NAS = ""
+  NASTimble = ""
 
   # Calculate the changes from the last read
   try:

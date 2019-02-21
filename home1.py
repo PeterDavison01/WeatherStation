@@ -47,7 +47,7 @@ def main():
       writer.writerow(fields)
   except:
     print("Could not write to file:", NasDIR)
-  NASTimble.close()
+  #NASTimble.close()
 # --------------------------------
 
 main()

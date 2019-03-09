@@ -1,3 +1,5 @@
+ nano 2.7.4                                                                                                                                         File: weather.py                                                                                                                                          Modified
+
 # -*- coding: utf-8 -*-
 #!/usr/bin/python3
 '''
@@ -14,11 +16,14 @@ from sklearn.linear_model import LinearRegression
 from time import strftime
 import time
 import io
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 # from io import StringIO
 
 app = Flask(__name__)
-NasDIR = '/home/pi/mnt/Nas/Timble Data.csv'
-HarrogateModel='/home/pi/Documents/WeatherStation/Harrogate model.sav'
+NasDIR = '/mnt/Nas/Timble Data.csv'
+HarrogateModel='/home/pi/WeatherStation/Harrogate model.sav'
 # NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
 
 @app.route("/")
@@ -26,15 +31,23 @@ def homepage():
         # read the log file from the NAS
         outputhtml=""
         TD = strftime("%H:%M:%S on %d-%m-%y")
+        NAS=open(NasDIR,'rb')
+
         # datacsv=io.open(NasDIR,'rb')
 
         try:
-                with open(NasDIR,'rb') as NAS:
-                        Naslines = NAS.readlines()
+                Naslines = NAS.readlines()
         except IOError:
-                print("Could not read file:", NasDIR)
+                print ("Could not read file:", NasDIR)
         finally:
                 NAS.close()
+
+        #Matplotlib graphs
+ #       graphdata=np.genfromtxt(Naslines[-12:],delimiter=',',usecols=1,dtype=float)
+        #plt.plot(graphdata)
+        #plt.ylabel("Temperature")
+        #graph=plt.show()
+#        graph = build_graph(graphdata)
 
         # deconstruct last line into useful components
         logdate=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=0,dtype=str)
@@ -49,17 +62,20 @@ def homepage():
         except (AttributeError, EOFError, ImportError, IndexError) as e:
                 # secondary errors
                 print(traceback.format_exc(e))
-		#continue
+
 
         # construct the HTML output from all the data gathered
         outputhtml = outputhtml + "<h2>Current time is: "+TD+"</h2>"
         outputhtml = outputhtml + "The last log readings were from: " + str(logdate) + "</p>"
         outputhtml = outputhtml + "<table border=""1"">"
-        outputhtml = outputhtml + "<tr><th>Temperature</p>(°C)</th><th>Pressure</p>(mb)</th><th>Humidity</p>(??)</th><th>Change in</p>Temp (°C)</th><th>Change in</p>Press (mb)</th><th>Change in</p>Humidity (??)</th></tr>"
+        outputhtml = outputhtml + "<tr><th>Temperature</p>(°C)</th><th>Pressure</p>(mb)</th><th>Humidity</p>(Pa)</th><th>Change in</p>Temp (°C)</th><th>Change in</p>Press (mb)</th><th>Change in</p>Humidity (Pa)</th></tr>"
         outputhtml = outputhtml + "<tr><th>"+str(logdata[0])+"</th><th>"+str(logdata[1])+"</th><th>"+str(logdata[2])+"</th><th>"+str(logdata[3])+"</th><th>"+str(logdata[4])+"</th><th>"+str(logdata[5])+"</th></tr>"
         outputhtml = outputhtml + "</table>"
         outputhtml = outputhtml + "<h1>Using this data in the model - gives a predicted temperature for the next hour of " + result + "°C</h1>"
+        outputhtml = outputhtml + " "
+  #      outputhtml = outputhtml + "<div><img src='{{ graph }}'></img></div>"
         return(outputhtml)
 
 if __name__ == '__main__':
-	app.run(debug=True,port=80,host='0.0.0.0')
+        app.run(debug=True,port=5000,host='0.0.0.0')
+

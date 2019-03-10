@@ -1,5 +1,3 @@
- nano 2.7.4                                                                                                                                         File: weather.py                                                                                                                                          Modified
-
 # -*- coding: utf-8 -*-
 #!/usr/bin/python3
 '''
@@ -7,7 +5,7 @@ from werkzeug.debug import DebuggedApplication
 from myapp import app
 app = DebuggedApplication(app, evalex=True)
 '''
-from flask import Flask, render_template
+from flask import Flask, render_template, Markup
 import numpy as np
 import csv
 import pandas
@@ -16,9 +14,6 @@ from sklearn.linear_model import LinearRegression
 from time import strftime
 import time
 import io
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 # from io import StringIO
 
 app = Flask(__name__)
@@ -33,21 +28,12 @@ def homepage():
         TD = strftime("%H:%M:%S on %d-%m-%y")
         NAS=open(NasDIR,'rb')
 
-        # datacsv=io.open(NasDIR,'rb')
-
         try:
                 Naslines = NAS.readlines()
         except IOError:
                 print ("Could not read file:", NasDIR)
         finally:
                 NAS.close()
-
-        #Matplotlib graphs
- #       graphdata=np.genfromtxt(Naslines[-12:],delimiter=',',usecols=1,dtype=float)
-        #plt.plot(graphdata)
-        #plt.ylabel("Temperature")
-        #graph=plt.show()
-#        graph = build_graph(graphdata)
 
         # deconstruct last line into useful components
         logdate=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=0,dtype=str)
@@ -73,7 +59,7 @@ def homepage():
         outputhtml = outputhtml + "</table>"
         outputhtml = outputhtml + "<h1>Using this data in the model - gives a predicted temperature for the next hour of " + result + "°C</h1>"
         outputhtml = outputhtml + " "
-  #      outputhtml = outputhtml + "<div><img src='{{ graph }}'></img></div>"
+#        outputhtml = outputhtml + "<div><img src='{{ graph }}'></img></div>"
         return(outputhtml)
 
 if __name__ == '__main__':

@@ -14,31 +14,36 @@ from sklearn.linear_model import LinearRegression
 from time import strftime
 import time
 import io
+import pygal
+from pygal.style import Style
 # from io import StringIO
 
 app = Flask(__name__)
 NasDIR = '/mnt/Nas/Timble Data.csv'
 HarrogateModel='/home/pi/WeatherStation/Harrogate model.sav'
-# NasDIR = '//mpd-ds/WeatherStation/Timble Data.csv'
+chartHTML = '/Templates/chart.html'
+
 
 @app.route("/")
 def homepage():
         # read the log file from the NAS
         outputhtml=""
-        TD = strftime("%H:%M:%S on %d-%m-%y")
+        TD = strftime("%d-%m-%y %H:%M:%S")
         NAS=open(NasDIR,'rb')
 
         try:
-                Naslines = NAS.readlines()
+                        Naslines = NAS.readlines()
         except IOError:
-                print ("Could not read file:", NasDIR)
+                        print ("Could not read file:", NasDIR)
         finally:
-                NAS.close()
+                        NAS.close()
 
         # deconstruct last line into useful components
-        logdate=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=0,dtype=str)
-        logdata=np.genfromtxt(Naslines[-1:],delimiter=',',usecols=(1,2,3,4,5,6),dtype=float)
-        currstats=logdata.reshape(1,6)
+        logdate=np.genfromtxt(Naslines[-24:],delimiter=',',usecols=0,dtype=str)
+        logdata=np.genfromtxt(Naslines[-24:],delimiter=',',usecols=(1,2,3,4,5,6),dtype=float)
+        curr_logdate=logdate[-1:]
+        curr_logdata=logdata[-1:]
+        currstats=curr_logdata.reshape(1,6)
 
         # load the model, and use it to predict the future temp
         try:
@@ -49,19 +54,44 @@ def homepage():
                 # secondary errors
                 print(traceback.format_exc(e))
 
+        # create the line graphs of temp, pressure and humdity
+        pressdata=logdata[:,1]
+        press_chart = pygal.Line(x_label_rotation=45,y_title="Pressure (mb)",show_legend=False)
+        press_chart.x_labels=logdate
+        press_chart.add('Pressure', pressdata)
+
+        humiditydata=logdata[:,2]
+        humidity_chart = pygal.Line(x_label_rotation=45,y_title="Humidity",show_legend=False)
+        humidity_chart.x_labels=logdate
+        humidity_chart.add('Humidity', humiditydata)
+
+        logdate=np.append(logdate,str(TD))
+        tempdata=logdata[:,0]
+        tempdata2=np.append(tempdata,float(result))
+        custom_style = Style(colors=('blue','red'))
+        temp_chart = pygal.Line(x_label_rotation=45,y_title="Temp (C)",show_legend=False,style=custom_style)
+        temp_chart.x_labels=logdate
+        temp_chart.add('Prediction', tempdata2)
+        temp_chart.add('Temp', tempdata)
 
         # construct the HTML output from all the data gathered
-        outputhtml = outputhtml + "<h2>Current time is: "+TD+"</h2>"
-        outputhtml = outputhtml + "The last log readings were from: " + str(logdate) + "</p>"
-        outputhtml = outputhtml + "<table border=""1"">"
-        outputhtml = outputhtml + "<tr><th>Temperature</p>(°C)</th><th>Pressure</p>(mb)</th><th>Humidity</p>(Pa)</th><th>Change in</p>Temp (°C)</th><th>Change in</p>Press (mb)</th><th>Change in</p>Humidity (Pa)</th></tr>"
-        outputhtml = outputhtml + "<tr><th>"+str(logdata[0])+"</th><th>"+str(logdata[1])+"</th><th>"+str(logdata[2])+"</th><th>"+str(logdata[3])+"</th><th>"+str(logdata[4])+"</th><th>"+str(logdata[5])+"</th></tr>"
-        outputhtml = outputhtml + "</table>"
-        outputhtml = outputhtml + "<h1>Using this data in the model - gives a predicted temperature for the next hour of " + result + "°C</h1>"
-        outputhtml = outputhtml + " "
-#        outputhtml = outputhtml + "<div><img src='{{ graph }}'></img></div>"
+        outputhtml = """
+        <html>
+                <head>
+                        <title>%s</title>
+                </head>
+                <body>
+                        <h1>We predict temperature for the next hour will be %s°C</h1>
+                        <h3>Current time is: %s</h3>
+                        %s%s%s
+                </body>
+        </html>
+        """ % ("Timble Weather",result,TD,temp_chart.render(),press_chart.render(),humidity_chart.render())
         return(outputhtml)
 
+
 if __name__ == '__main__':
-        app.run(debug=True,port=5000,host='0.0.0.0')
+        # app.run()
+        app.run(debug=True,port=8082,host='192.168.16.25')
+
 

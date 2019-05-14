@@ -2,12 +2,8 @@
 # --------------------------------
 import time
 from time import strftime
-import os
 from sense_hat import SenseHat
 import csv
-import shutil
-import distutils
-from distutils import dir_util
 import numpy as np
 
 # --------------------------------
